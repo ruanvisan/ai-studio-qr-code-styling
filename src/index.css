@@ -1,0 +1,231 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@theme inline {
+    --font-heading: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
+    --font-sans: "Verdana", "Geneva", sans-serif;
+    --font-mono: "Courier New", Courier, monospace;
+    
+    --color-primary: #000080; /* Navy Blue */
+    --color-secondary: #c0c0c0; /* Silver/Grey */
+    --color-accent: #ff0000; /* Red */
+    --color-background: #ffffff;
+    --color-border: #808080;
+}
+
+:root {
+    --background: #ffffff;
+    --foreground: #000000;
+    --card: #e0e0e0;
+    --card-foreground: #000000;
+    --popover: #ffffff;
+    --popover-foreground: #000000;
+    --primary: #000080;
+    --primary-foreground: #ffffff;
+    --secondary: #c0c0c0;
+    --secondary-foreground: #000000;
+    --muted: #d4d4d4;
+    --muted-foreground: #404040;
+    --accent: #ffff00;
+    --accent-foreground: #000000;
+    --destructive: #ff0000;
+    --border: #808080;
+    --input: #ffffff;
+    --ring: #0000ff;
+    --radius: 0px; /* Sharp corners for 2000s look */
+}
+
+@layer base {
+  * {
+    @apply border-border;
+    }
+  body {
+    @apply bg-[#f0f0f0] text-black;
+    background-image: url('https://www.transparenttextures.com/patterns/cubes.png');
+    }
+  html {
+    @apply font-sans;
+    }
+}
+
+/* 2000s UI Helpers */
+.retro-bevel {
+  border: 2px solid;
+  border-color: #ffffff #808080 #808080 #ffffff;
+}
+
+.retro-inset {
+  border: 2px solid;
+  border-color: #808080 #ffffff #ffffff #808080;
+}
+
+.retro-button {
+  background: #c0c0c0;
+  border: 2px solid;
+  border-color: #ffffff #404040 #404040 #ffffff;
+  padding: 2px 8px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.retro-button:active {
+  border-color: #404040 #ffffff #ffffff #404040;
+  padding: 3px 7px 1px 9px;
+}
+
+.retro-header {
+  background: linear-gradient(90deg, #000080 0%, #1084d0 100%);
+  color: white;
+  padding: 4px 8px;
+  font-weight: bold;
+  font-family: var(--font-heading);
+}
+
+/* Hacker Theme (CMD Style) */
+[data-theme="hacker"] {
+  --background: #000000;
+  --foreground: #00ff00;
+  --primary: #00ff00;
+  --secondary: #003300;
+  --border: #00ff00;
+  --font-sans: "Courier New", Courier, monospace;
+}
+
+[data-theme="hacker"] body {
+  background-color: #000000;
+  background-image: radial-gradient(#003300 0.5px, transparent 0.5px);
+  background-size: 20px 20px;
+  color: #00ff00;
+  font-family: var(--font-mono);
+}
+
+[data-theme="hacker"] .retro-bevel {
+  border: 1px solid #00ff00;
+  box-shadow: 0 0 5px #00ff00;
+}
+
+[data-theme="hacker"] .retro-inset {
+  border: 1px solid #00ff00;
+  background: #001100;
+}
+
+[data-theme="hacker"] .retro-button {
+  background: #000000;
+  border: 1px solid #00ff00;
+  color: #00ff00;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  box-shadow: 0 0 2px #00ff00;
+}
+
+[data-theme="hacker"] .retro-button:hover {
+  background: #00ff00;
+  color: #000000;
+  box-shadow: 0 0 10px #00ff00;
+}
+
+[data-theme="hacker"] .retro-header {
+  background: #00ff00;
+  color: #000000;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+
+[data-theme="hacker"] .retro-inset input,
+[data-theme="hacker"] .retro-inset select,
+[data-theme="hacker"] .retro-inset textarea {
+  background: #000000;
+  color: #00ff00;
+  border: none;
+  outline: none;
+}
+
+[data-theme="hacker"] ::selection {
+  background: #00ff00;
+  color: #000000;
+}
+
+/* Scanline effect for hacker theme */
+[data-theme="hacker"]::after {
+  content: " ";
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+  z-index: 9999;
+  background-size: 100% 2px, 3px 100%;
+  pointer-events: none;
+}
+
+/* Frame Styles */
+.frame-winxp {
+  border: 3px solid #0055e5;
+  border-radius: 8px 8px 0 0;
+  padding-top: 30px;
+  position: relative;
+  background: #f0f0f0;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+}
+.frame-winxp::before {
+  content: "QR_VIEWER.EXE";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 30px;
+  background: linear-gradient(to bottom, #0055e5 0%, #2976fa 100%);
+  color: white;
+  font-family: "Trebuchet MS", sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+  border-radius: 5px 5px 0 0;
+}
+
+.frame-tv {
+  background: #4a3728;
+  padding: 40px;
+  border-radius: 20px;
+  position: relative;
+  border: 8px solid #2a1f17;
+  box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
+}
+.frame-tv::after {
+  content: "";
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 60px;
+  background: #2a1f17;
+  border-radius: 5px;
+  box-shadow: 0 10px 0 #2a1f17, 0 -10px 0 #2a1f17;
+}
+
+.frame-monitor {
+  background: #dcdcdc;
+  padding: 30px;
+  border: 15px solid #c0c0c0;
+  border-radius: 10px;
+  position: relative;
+  box-shadow: 5px 5px 15px rgba(0,0,0,0.2);
+}
+.frame-monitor::after {
+  content: "";
+  position: absolute;
+  bottom: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 40px;
+  background: #c0c0c0;
+  clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
+}
